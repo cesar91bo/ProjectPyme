@@ -1,0 +1,11 @@
+C:\Users\Cesar\Documents\Proyectos\VideoCable\VideoCable\bin\Debug\VideoCable.exe.config
+C:\Users\Cesar\Documents\Proyectos\VideoCable\VideoCable\bin\Debug\VideoCable.exe
+C:\Users\Cesar\Documents\Proyectos\VideoCable\VideoCable\bin\Debug\VideoCable.pdb
+C:\Users\Cesar\Documents\Proyectos\VideoCable\VideoCable\obj\Debug\VideoCable.csproj.AssemblyReference.cache
+C:\Users\Cesar\Documents\Proyectos\VideoCable\VideoCable\obj\Debug\VideoCable.csproj.SuggestedBindingRedirects.cache
+C:\Users\Cesar\Documents\Proyectos\VideoCable\VideoCable\obj\Debug\VideoCable.Properties.Resources.resources
+C:\Users\Cesar\Documents\Proyectos\VideoCable\VideoCable\obj\Debug\VideoCable.csproj.GenerateResource.cache
+C:\Users\Cesar\Documents\Proyectos\VideoCable\VideoCable\obj\Debug\VideoCable.csproj.CoreCompileInputs.cache
+C:\Users\Cesar\Documents\Proyectos\VideoCable\VideoCable\obj\Debug\VideoCable.exe
+C:\Users\Cesar\Documents\Proyectos\VideoCable\VideoCable\obj\Debug\VideoCable.pdb
+C:\Users\Cesar\Documents\Proyectos\VideoCable\VideoCable\obj\Debug\VideoCable.FormFacturacion.resources
