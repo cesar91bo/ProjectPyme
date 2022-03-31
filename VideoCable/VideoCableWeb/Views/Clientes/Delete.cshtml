@@ -1,0 +1,57 @@
+﻿@model VideoCableWeb.Data.Cliente
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Eliminar Cliente</h2>
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal" style="font-size:20px;">
+
+        <dt>
+            Razon Social
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Persona.RazonSocial)
+        </dd>
+
+        <dt>
+            Precinto
+        </dt>
+
+        <dd>
+            N° @Html.DisplayFor(model => model.NumeroPrecinto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Persona.Telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Persona.Telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar</button>
+            <a class="btn btn-default" href="/Clientes"><i class="fa fa-chevron-left" aria-hidden="true"></i> Volver</a>
+        </div>
+    }
+
+</div>

@@ -1,0 +1,35 @@
+﻿@model VideoCableWeb.Data.Servicio
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Servicio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Costo)
+        </dt>
+
+        <dd>
+            $ @Html.DisplayFor(model => model.Costo)
+        </dd>
+
+    </dl>
+
+    <div class="form-actions no-color">
+        <a class="btn btn-info" href="/Servicios/Edit/@Model.ServicioId"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</a>
+        <a class="btn btn-default" href="/Servicios"><i class="fa fa-chevron-left" aria-hidden="true"></i> Volver</a>
+    </div>
+</div>

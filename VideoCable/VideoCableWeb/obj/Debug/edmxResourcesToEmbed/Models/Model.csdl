@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VideoCableDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PersonaId" Type="Int32" />
+    <NavigationProperty Name="Persona" Relationship="Self.FK_AspNetUsers_Personas" FromRole="AspNetUsers" ToRole="Personas" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="CajasDistribucione">
+    <Key>
+      <PropertyRef Name="CajaDistribucionId" />
+    </Key>
+    <Property Name="CajaDistribucionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descipcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Longitud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Latitud" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaUltimaModificacion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UsuarioUltimaModificacion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ClientesCajasDistribucionesServicios" Relationship="Self.FK_ClientesCajasDistribucionesServicios_CajasDistribuciones" FromRole="CajasDistribuciones" ToRole="ClientesCajasDistribucionesServicios" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="ClienteId" />
+    </Key>
+    <Property Name="ClienteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonaId" Type="Int32" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NumeroPrecinto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaUltimaModificacion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UsuarioUltimaModificacion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Persona" Relationship="Self.FK_Clientes_Personas" FromRole="Clientes" ToRole="Personas" />
+    <NavigationProperty Name="ClientesCajasDistribucionesServicios" Relationship="Self.FK_ClientesCajasDistribucionesServicios_Clientes" FromRole="Clientes" ToRole="ClientesCajasDistribucionesServicios" />
+  </EntityType>
+  <EntityType Name="ClientesCajasDistribucionesServicio">
+    <Key>
+      <PropertyRef Name="ClienteCajaDistribucionServicioId" />
+    </Key>
+    <Property Name="ClienteCajaDistribucionServicioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClienteId" Type="Int32" Nullable="false" />
+    <Property Name="CajaDistribucionId" Type="Int32" Nullable="false" />
+    <Property Name="ServicioId" Type="Int32" Nullable="false" />
+    <Property Name="UltimoEstadoId" Type="Int32" Nullable="false" />
+    <Property Name="FechaUltimaModificacion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UsuarioUltimaModificacion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CajasDistribucione" Relationship="Self.FK_ClientesCajasDistribucionesServicios_CajasDistribuciones" FromRole="ClientesCajasDistribucionesServicios" ToRole="CajasDistribuciones" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK_ClientesCajasDistribucionesServicios_Clientes" FromRole="ClientesCajasDistribucionesServicios" ToRole="Clientes" />
+    <NavigationProperty Name="Estado" Relationship="Self.FK_ClientesCajasDistribucionesServicios_Estados" FromRole="ClientesCajasDistribucionesServicios" ToRole="Estados" />
+    <NavigationProperty Name="Servicio" Relationship="Self.FK_ClientesCajasDistribucionesServicios_Servicios" FromRole="ClientesCajasDistribucionesServicios" ToRole="Servicios" />
+    <NavigationProperty Name="ClientesCajasDistribucionesServiciosEstados" Relationship="Self.FK_ClientesCajasDistribucionesServiciosEstados_ClientesCajasDistribucionesServicios" FromRole="ClientesCajasDistribucionesServicios" ToRole="ClientesCajasDistribucionesServiciosEstados" />
+  </EntityType>
+  <EntityType Name="ClientesCajasDistribucionesServiciosEstado">
+    <Key>
+      <PropertyRef Name="ClienteCajaDistribucionServicioEstadoId" />
+    </Key>
+    <Property Name="ClienteCajaDistribucionServicioEstadoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClienteCajaDistribucionServicioId" Type="Int32" Nullable="false" />
+    <Property Name="EstadoId" Type="Int32" Nullable="false" />
+    <Property Name="FechaUltimaModificacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UsuarioUltimaModificacion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ClientesCajasDistribucionesServicio" Relationship="Self.FK_ClientesCajasDistribucionesServiciosEstados_ClientesCajasDistribucionesServicios" FromRole="ClientesCajasDistribucionesServiciosEstados" ToRole="ClientesCajasDistribucionesServicios" />
+    <NavigationProperty Name="Estado" Relationship="Self.FK_ClientesCajasDistribucionesServiciosEstados_Estados" FromRole="ClientesCajasDistribucionesServiciosEstados" ToRole="Estados" />
+  </EntityType>
+  <EntityType Name="Estado">
+    <Key>
+      <PropertyRef Name="EstadoId" />
+    </Key>
+    <Property Name="EstadoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ClientesCajasDistribucionesServicios" Relationship="Self.FK_ClientesCajasDistribucionesServicios_Estados" FromRole="Estados" ToRole="ClientesCajasDistribucionesServicios" />
+    <NavigationProperty Name="ClientesCajasDistribucionesServiciosEstados" Relationship="Self.FK_ClientesCajasDistribucionesServiciosEstados_Estados" FromRole="Estados" ToRole="ClientesCajasDistribucionesServiciosEstados" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="PersonaId" />
+    </Key>
+    <Property Name="PersonaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RazonSocial" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cuit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FechaUltimaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="UsuarioUltimaModificacion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_Personas" FromRole="Personas" ToRole="AspNetUsers" />
+    <NavigationProperty Name="Clientes" Relationship="Self.FK_Clientes_Personas" FromRole="Personas" ToRole="Clientes" />
+  </EntityType>
+  <EntityType Name="Servicio">
+    <Key>
+      <PropertyRef Name="ServicioId" />
+    </Key>
+    <Property Name="ServicioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaUltimaModificacion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UsuarioUltimaModificacion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Costo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="ClientesCajasDistribucionesServicios" Relationship="Self.FK_ClientesCajasDistribucionesServicios_Servicios" FromRole="Servicios" ToRole="ClientesCajasDistribucionesServicios" />
+  </EntityType>
+  <Association Name="FK_AspNetUsers_Personas">
+    <End Role="Personas" Type="Self.Persona" Multiplicity="0..1" />
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personas">
+        <PropertyRef Name="PersonaId" />
+      </Principal>
+      <Dependent Role="AspNetUsers">
+        <PropertyRef Name="PersonaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientesCajasDistribucionesServicios_CajasDistribuciones">
+    <End Role="CajasDistribuciones" Type="Self.CajasDistribucione" Multiplicity="1" />
+    <End Role="ClientesCajasDistribucionesServicios" Type="Self.ClientesCajasDistribucionesServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CajasDistribuciones">
+        <PropertyRef Name="CajaDistribucionId" />
+      </Principal>
+      <Dependent Role="ClientesCajasDistribucionesServicios">
+        <PropertyRef Name="CajaDistribucionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clientes_Personas">
+    <End Role="Personas" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Clientes" Type="Self.Cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personas">
+        <PropertyRef Name="PersonaId" />
+      </Principal>
+      <Dependent Role="Clientes">
+        <PropertyRef Name="PersonaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientesCajasDistribucionesServicios_Clientes">
+    <End Role="Clientes" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="ClientesCajasDistribucionesServicios" Type="Self.ClientesCajasDistribucionesServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="ClienteId" />
+      </Principal>
+      <Dependent Role="ClientesCajasDistribucionesServicios">
+        <PropertyRef Name="ClienteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientesCajasDistribucionesServicios_Estados">
+    <End Role="Estados" Type="Self.Estado" Multiplicity="1" />
+    <End Role="ClientesCajasDistribucionesServicios" Type="Self.ClientesCajasDistribucionesServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estados">
+        <PropertyRef Name="EstadoId" />
+      </Principal>
+      <Dependent Role="ClientesCajasDistribucionesServicios">
+        <PropertyRef Name="UltimoEstadoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientesCajasDistribucionesServicios_Servicios">
+    <End Role="Servicios" Type="Self.Servicio" Multiplicity="1" />
+    <End Role="ClientesCajasDistribucionesServicios" Type="Self.ClientesCajasDistribucionesServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicios">
+        <PropertyRef Name="ServicioId" />
+      </Principal>
+      <Dependent Role="ClientesCajasDistribucionesServicios">
+        <PropertyRef Name="ServicioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientesCajasDistribucionesServiciosEstados_ClientesCajasDistribucionesServicios">
+    <End Role="ClientesCajasDistribucionesServicios" Type="Self.ClientesCajasDistribucionesServicio" Multiplicity="1" />
+    <End Role="ClientesCajasDistribucionesServiciosEstados" Type="Self.ClientesCajasDistribucionesServiciosEstado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientesCajasDistribucionesServicios">
+        <PropertyRef Name="ClienteCajaDistribucionServicioId" />
+      </Principal>
+      <Dependent Role="ClientesCajasDistribucionesServiciosEstados">
+        <PropertyRef Name="ClienteCajaDistribucionServicioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientesCajasDistribucionesServiciosEstados_Estados">
+    <End Role="Estados" Type="Self.Estado" Multiplicity="1" />
+    <End Role="ClientesCajasDistribucionesServiciosEstados" Type="Self.ClientesCajasDistribucionesServiciosEstado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estados">
+        <PropertyRef Name="EstadoId" />
+      </Principal>
+      <Dependent Role="ClientesCajasDistribucionesServiciosEstados">
+        <PropertyRef Name="EstadoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="VideoCableDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+    <EntitySet Name="CajasDistribuciones" EntityType="Self.CajasDistribucione" />
+    <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+    <EntitySet Name="ClientesCajasDistribucionesServicios" EntityType="Self.ClientesCajasDistribucionesServicio" />
+    <EntitySet Name="ClientesCajasDistribucionesServiciosEstados" EntityType="Self.ClientesCajasDistribucionesServiciosEstado" />
+    <EntitySet Name="Estados" EntityType="Self.Estado" />
+    <EntitySet Name="Personas" EntityType="Self.Persona" />
+    <EntitySet Name="Servicios" EntityType="Self.Servicio" />
+    <AssociationSet Name="FK_AspNetUsers_Personas" Association="Self.FK_AspNetUsers_Personas">
+      <End Role="Personas" EntitySet="Personas" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientesCajasDistribucionesServicios_CajasDistribuciones" Association="Self.FK_ClientesCajasDistribucionesServicios_CajasDistribuciones">
+      <End Role="CajasDistribuciones" EntitySet="CajasDistribuciones" />
+      <End Role="ClientesCajasDistribucionesServicios" EntitySet="ClientesCajasDistribucionesServicios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clientes_Personas" Association="Self.FK_Clientes_Personas">
+      <End Role="Personas" EntitySet="Personas" />
+      <End Role="Clientes" EntitySet="Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientesCajasDistribucionesServicios_Clientes" Association="Self.FK_ClientesCajasDistribucionesServicios_Clientes">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="ClientesCajasDistribucionesServicios" EntitySet="ClientesCajasDistribucionesServicios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientesCajasDistribucionesServicios_Estados" Association="Self.FK_ClientesCajasDistribucionesServicios_Estados">
+      <End Role="Estados" EntitySet="Estados" />
+      <End Role="ClientesCajasDistribucionesServicios" EntitySet="ClientesCajasDistribucionesServicios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientesCajasDistribucionesServicios_Servicios" Association="Self.FK_ClientesCajasDistribucionesServicios_Servicios">
+      <End Role="Servicios" EntitySet="Servicios" />
+      <End Role="ClientesCajasDistribucionesServicios" EntitySet="ClientesCajasDistribucionesServicios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientesCajasDistribucionesServiciosEstados_ClientesCajasDistribucionesServicios" Association="Self.FK_ClientesCajasDistribucionesServiciosEstados_ClientesCajasDistribucionesServicios">
+      <End Role="ClientesCajasDistribucionesServicios" EntitySet="ClientesCajasDistribucionesServicios" />
+      <End Role="ClientesCajasDistribucionesServiciosEstados" EntitySet="ClientesCajasDistribucionesServiciosEstados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientesCajasDistribucionesServiciosEstados_Estados" Association="Self.FK_ClientesCajasDistribucionesServiciosEstados_Estados">
+      <End Role="Estados" EntitySet="Estados" />
+      <End Role="ClientesCajasDistribucionesServiciosEstados" EntitySet="ClientesCajasDistribucionesServiciosEstados" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

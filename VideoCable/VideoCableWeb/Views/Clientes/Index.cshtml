@@ -1,0 +1,78 @@
+﻿@model IEnumerable<VideoCableWeb.Data.Cliente>
+
+@{
+    ViewBag.Title = "Clientes";
+}
+
+<h2>Listado Clientes</h2>
+<hr />
+<p>
+    <a class="btn btn-success" href="/Clientes/Create"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Razon Social
+        </th>
+
+        <th>
+            N° Precinto
+        </th>
+        <th>
+            Telefono
+        </th>
+        <th>
+            Direccion
+        </th>
+        <th>
+            Email
+        </th>
+        <th>Acciones</th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Persona.RazonSocial)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.NumeroPrecinto)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Persona.Telefono)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Direccion)
+    </td>
+
+    @if (String.IsNullOrEmpty(item.Persona.Email))
+    {
+        <td>
+
+            SIN EMAIL
+        </td>
+    }
+    else
+    {
+        <td>
+
+            @Html.DisplayFor(modelItem => item.Persona.Email)
+        </td>
+    }
+
+
+
+    <td>
+        <a class="btn btn-success" href="/ClientesCajasDistribucionesServicios/Index?clienteId=@item.ClienteId"><i class="fa fa-plus" aria-hidden="true"></i> Servicio</a>
+        <a class="btn btn-info" href="/Clientes/Edit/@item.ClienteId"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</a>
+        <a class="btn btn-default" href="/Clientes/Details/@item.ClienteId"><i class="fa fa-info" aria-hidden="true"></i> Detalle</a>
+        <a class="btn btn-danger" href="/Clientes/Delete/@item.ClienteId"><i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar</a>
+
+    </td>
+</tr>
+}
+
+</table>

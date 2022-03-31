@@ -1,0 +1,58 @@
+﻿@model IEnumerable<VideoCableWeb.Data.Servicio>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado Servicios</h2>
+<hr />
+<p>
+    <a class="btn btn-success" href="/Servicios/Create"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Costo)
+        </th>
+
+        <th>
+            Estado
+        </th>
+        <th>Acciones</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="background-color: @(item.Activo.HasValue && !item.Activo.Value ? "#F96409" : "#61C54F");color: white;font-weight: bold;">
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+
+            <td>
+                @item.Costo.ToString("C")
+            </td>
+            @if (item.Activo.HasValue && item.Activo.Value)
+            {
+
+                <td>
+                    Activo
+                </td>
+            }
+            else
+            {
+                <td>
+                    Inactivo
+                </td>
+            }
+        <td>
+            <a class="btn btn-info" href="/Servicios/Edit/@item.ServicioId"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</a>
+            <a class="btn btn-default" href="/Servicios/Details/@item.ServicioId"><i class="fa fa-info" aria-hidden="true"></i> Detalle</a>
+        </td>
+        </tr>
+    }
+
+</table>

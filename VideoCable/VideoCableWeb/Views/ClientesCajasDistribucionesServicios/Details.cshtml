@@ -1,0 +1,71 @@
+﻿@model VideoCableWeb.Data.ClientesCajasDistribucionesServicio
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ClientesCajasDistribucionesServicio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaUltimaModificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaUltimaModificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioUltimaModificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioUltimaModificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CajasDistribucione.Descipcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CajasDistribucione.Descipcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Servicio.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Servicio.Descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a class="btn btn-info" href="/ClientesCajasDistribucionesServicios/Edit/@Model.ClienteId"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</a>
+            <a class="btn btn-default" href="/ClientesCajasDistribucionesServicios/Index?clienteId=@ViewBag.ClienteId"><i class="fa fa-chevron-left" aria-hidden="true"></i> Volver</a>
+
+        </div>
+    </div>
+</p>

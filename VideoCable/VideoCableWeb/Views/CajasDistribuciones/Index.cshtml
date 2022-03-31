@@ -1,0 +1,47 @@
+﻿@model IEnumerable<VideoCableWeb.Data.CajasDistribucione>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado Cajas de Distribucion</h2>
+<hr />
+<p>
+    <a class="btn btn-success" href="/CajasDistribuciones/Create"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descipcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitud)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitud)
+        </th>
+   
+        <th>Acciones</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descipcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Longitud)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Latitud)
+        </td>
+  
+        <td>
+            <a class="btn btn-info" href="/CajasDistribuciones/Edit/@item.CajaDistribucionId"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</a>
+            <a class="btn btn-default" href="/CajasDistribuciones/Details/@item.CajaDistribucionId"><i class="fa fa-info" aria-hidden="true"></i> Detalle</a>
+        </td>
+    </tr>
+}
+
+</table>
+

@@ -1,0 +1,58 @@
+﻿@model VideoCableWeb.Data.CajasDistribucione
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CajasDistribucione</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descipcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descipcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitud)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitud)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitud)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitud)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaUltimaModificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaUltimaModificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioUltimaModificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioUltimaModificacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CajaDistribucionId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

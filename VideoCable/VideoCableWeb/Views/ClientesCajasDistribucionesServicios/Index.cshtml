@@ -1,0 +1,57 @@
+﻿@model IEnumerable<VideoCableWeb.Data.ClientesCajasDistribucionesServicio>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado de Serivicios del Cliente</h2>
+<h3>@ViewBag.Cliente</h3>
+
+<hr />
+<p>
+    <a class="btn btn-success" href="/ClientesCajasDistribucionesServicios/Create?clienteId=@ViewBag.ClienteId"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Servicio
+        </th>
+        <th>
+            Monto
+        </th>
+        <th>
+            Caja
+        </th>
+        <th>
+            Estado
+        </th>
+
+        <th>Acciones</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @item.Servicio.Descripcion
+    </td>
+    <td>
+        @item.Servicio.Costo.ToString("C")
+    </td>
+    <td>
+        @item.CajasDistribucione.Descipcion
+    </td>
+    <td>
+        @item.Estado.Descripcion
+    </td>
+    <td>
+        @*@Html.ActionLink("Edit", "Edit", new { id = item.ClienteCajaDistribucionServicioId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ClienteCajaDistribucionServicioId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ClienteCajaDistribucionServicioId })*@
+    </td>
+</tr>
+    }
+
+</table>
+<hr />
+<a class="btn btn-default" href="/Clientes"><i class="fa fa-chevron-left" aria-hidden="true"></i> Volver</a>

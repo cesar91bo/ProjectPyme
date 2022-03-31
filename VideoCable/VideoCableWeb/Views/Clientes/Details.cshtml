@@ -1,0 +1,51 @@
+﻿@model VideoCableWeb.Data.Cliente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalle</h2>
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal" style="font-size:20px;">
+        <dt>
+            Razon Social
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Persona.RazonSocial)
+        </dd>
+
+        <dt>
+            Precinto
+        </dt>
+
+        <dd>
+            N° @Html.DisplayFor(model => model.NumeroPrecinto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Persona.Telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Persona.Telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+
+    </dl>
+
+    <div class="form-actions no-color">
+        <a class="btn btn-info" href="/Clientes/Edit/@Model.ClienteId"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</a>
+        <a class="btn btn-default" href="/Clientes"><i class="fa fa-chevron-left" aria-hidden="true"></i> Volver</a>
+    </div>
+</div>
+
